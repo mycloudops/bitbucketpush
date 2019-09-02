@@ -1,0 +1,30 @@
+---
+- name: master_instance
+  hosts: master
+  become: yes
+  become_method: sudo
+  become_user: root
+  roles:
+    - dockerSwarmMaster
+  vars:
+    ca_pem: /home/keys/ca.pem
+    ca_key: /home/keys/ca-key.pem
+    remote_key_path: /home/ubuntu
+    keys_path: /opt/keys
+
+- name: slave-node
+  hosts: slaves
+  become: yes
+  become_method: sudo
+  become_user: root
+  roles:
+    - dockerSwarmSlaves
+  vars:
+    ca_pem: /home/keys/ca.pem
+    ca_key: /home/keys/ca-key.pem
+    remote_key_path: /home/ubuntu
+    keys_path: /opt/keys      
+
+   
+
+

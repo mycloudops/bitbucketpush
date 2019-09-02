@@ -1,0 +1,11 @@
+---
+- name: master_instance
+  hosts: all
+  become: yes
+  become_method: sudo
+  become_user: root
+  
+  
+  roles:
+    - swarm_API
+  
