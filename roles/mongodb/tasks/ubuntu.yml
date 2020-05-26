@@ -1,47 +1,15 @@
-
 ---
-#downloads tar-file
-- name: download tar file
-  shell: curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.2.tgz
-
-#untar the downloaded file
-- name: Unzip tar file
-  unarchive: src=/home/ubuntu/mongodb-linux-x86_64-3.4.2.tgz dest=/opt/ copy=no
-#add path to .bashrc 
-- name: set mongo home in bashrc file
-  lineinfile:
-    dest: /home/ubuntu/.bashrc
-    line: export PATH=/opt/mongodb-linux-x86_64-3.4.2/bin:$PATH
-    
-#add path to .bashrc    
-- name: set mongo path in bashrc file
-  lineinfile:
-    dest: /home/ubuntu/.bashrc
-    line: export MONGO_HOME=/opt/mongodb-linux-x86_64-3.4.2/bin/mongod
+# Runs the apt-get update
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yes
 
 
-#source the bashrc  
-- name: execute source command to make the changes to effect
-  sudo: yes 
-  shell: source /home/ubuntu/.bashrc
-  args:
-     executable: /bin/bash
+# Installs the MongoDB
+- name: Install MongoDB Server
+  apt: name=mongodb update_cache=yes install_recommends=no force=yes
 
-  
-#creating directory     
-- name: create a database directory for mongodb
-  file:
-    path: /data/db  
-    state: directory
-    mode: 0777 
 
-- name: copy mongo.service file 
-  template: 
-    src: mongod.service
-    dest: /etc/systemd/system/mongo.service
-
-- name: make sure mongo is started
-  service:
-    name: mongo
-    state: started
-
+# Starts the MongoDB-Service
+- name: Start mongodb service
+  service: name=mongodb state=started
