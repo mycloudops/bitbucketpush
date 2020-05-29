@@ -1,0 +1,16 @@
+---
+- name: Install java
+  hosts: all
+  become: True
+  become_method: sudo
+  become_user: root
+  roles:
+    - openjdk
+  vars:
+    java_install_dir: /usr/lib/jvm
+    java_tar_ball: "http://www.java.net/download/jdk8u60/archive/b17/binaries/jdk-8u60-ea-bin-b17-linux-x64-26_may_2015.tar.gz"
+    java_sub_version: "60"
+    java_playbook_version: "0.1.4" # playbook version
+    java_version: "7"
+    java_libjvm_path: "/usr/lib/jvm/java-{{java_version}}-*/jre/lib/*/server/libjvm.so"
+    java_libjvm_symlink_path: "/usr/lib/libjvm.so"

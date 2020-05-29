@@ -1,0 +1,12 @@
+---
+- name: install nodejs
+  hosts: all
+  become: yes
+  become_method: sudo
+  become_user: root
+  
+  roles:
+    - nodejs
+
+  vars:
+    version: "6.9.5"

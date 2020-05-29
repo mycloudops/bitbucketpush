@@ -1,0 +1,18 @@
+[Unit]
+Description=Sonatype Nexus
+
+[Service]
+User=nexus
+Group=nexus
+Type=forking
+PIDFile=/usr/local/nexus-2.14.4-03/bin/jsw/linux-x86-64/nexus.pid
+TimeoutStartSec=0
+ExecStart=/usr/local/nexus-2.14.4-03/bin/nexus start
+ExecStop=/usr/local/nexus-2.14.4-03/bin/nexus stop
+ExecReload=/usr/local/nexus-2.14.4-03/bin/nexus restart
+RestartSec=20
+
+[Install]
+Alias=nexus
+WantedBy=multi-user.target
+                                                                                                                                                     

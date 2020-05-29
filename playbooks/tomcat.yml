@@ -1,0 +1,9 @@
+---
+- name: install tomcat
+  hosts: all
+  become: yes
+  become_method: sudo
+  become_user: root
+  roles:
+    - tomcat
+ 

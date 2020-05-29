@@ -1,0 +1,12 @@
+---
+- name: swarm_install
+  hosts: all
+  become: yes
+  become_method: sudo
+  become_user: root
+
+  vars:
+    secure: true
+  
+  roles:
+    - swarm_unsecure

@@ -1,0 +1,17 @@
+---
+- name: start docker
+  become: yes
+  hosts: all
+  become_method: sudo
+  become_user: root
+
+  vars:
+    secure: true
+  
+  roles:
+    - Docker
+  
+  
+   
+    
+

@@ -1,0 +1,9 @@
+- name: install mariadb
+  hosts: all
+  become: yes
+  become_method: sudo
+  become_user: root
+  
+  roles:
+    - mariadb_server
+

@@ -1,0 +1,15 @@
+---
+# Runs the apt-get update
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yes
+
+
+# Installs the MongoDB
+- name: Install MongoDB Server
+  apt: name=mongodb update_cache=yes install_recommends=no force=yes
+
+
+# Starts the MongoDB-Service
+- name: Start mongodb service
+  service: name=mongodb state=started

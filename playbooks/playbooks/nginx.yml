@@ -1,0 +1,14 @@
+- name: install nginx
+  become: yes
+  hosts: all
+  become_method: sudo
+  become_user: root
+  
+  roles:
+    - nginx
+  vars:
+    path_to_install: /opt
+    pcre_version: '8.40'
+    zlib_version: 1.2.11
+    openssl_version: 1.0.2f
+    nginx_version: 1.10.3

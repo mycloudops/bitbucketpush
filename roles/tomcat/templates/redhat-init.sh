@@ -1,4 +1,4 @@
-#systemd unit file for tomcat 7 
+#systemd unit file for tomcat 7
 [Unit]
 Description=Apache Tomcat Web Application Container
 After=syslog.target network.target

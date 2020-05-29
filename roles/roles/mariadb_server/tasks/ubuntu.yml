@@ -1,0 +1,17 @@
+---
+# Installs the MariaDB-Server
+
+# Runs the apt-get update
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yes
+
+
+# Installs the MariaDB-Server
+- name: Install MariaDB Server
+  apt: name=mariadb-server update_cache=yes install_recommends=no force=yes
+
+
+# Starts the MariaDB-Service
+- name: Start mariadb service
+  service: name=mysql state=started
