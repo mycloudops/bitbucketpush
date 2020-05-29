@@ -13,4 +13,4 @@
 
 - name: Include amazon.yml if the operating system is amazon
   include: amazon.yml
-  when: ansible_distribution == 'Amazon Linux'
+  when: ansible_distribution == 'Amazon'
