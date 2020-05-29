@@ -4,7 +4,7 @@
   shell: "curl -O {{mondodb_tar_url}}"
 -
   name: "Unzip tar file"
-  unarchive: "src=/home/centos/mongodb-linux-x86_64-{{mongodb_version}} dest=/opt/ copy=no"
+  unarchive: "src=/home/centos/mongodb-linux-x86_64-{{mongodb_version}}.tgz dest=/opt/ copy=no"
 -
   lineinfile:
     dest: /home/centos/.bashrc
