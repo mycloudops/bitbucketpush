@@ -1,0 +1,7 @@
+# Installs the docker from the yum repository
+- name: install docker through yum repo
+  yum: name=docker
+
+# Starts the Docker
+- name: Start docker Service
+  service: name=docker state=started enabled=yes

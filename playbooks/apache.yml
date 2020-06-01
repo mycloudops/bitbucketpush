@@ -1,12 +1,9 @@
 ---
-- name: start docker
+- name: start apache
   become: yes
   hosts: all
   become_method: sudo
   become_user: root
 
-  vars:
-    secure: true
-  
   roles:
-    - Docker
+    - apache
