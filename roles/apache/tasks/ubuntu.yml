@@ -1,0 +1,16 @@
+---
+# Runs the apt-get update
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yes
+
+
+# Installs the apache httpd
+- name: Install apache Server
+  apt: name=apache2 update_cache=yes install_recommends=no force=yes
+
+
+# Starts the httpd Service
+- name: Start apache service
+  service: name=apache2 state=started
+

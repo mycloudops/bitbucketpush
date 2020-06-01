@@ -3,11 +3,11 @@
   apt:
     update_cache: yes
 
-- name: Install Java 1.7 and some basic dependencies
+- name: Install Java 1.8 and some basic dependencies
   apt: name={{item}} state=present
   with_items:
    - unzip
-   - openjdk-7-jre-headless
+   - openjdk-8-jre-headless
    - libselinux1
    - python-selinux
   
