@@ -9,4 +9,4 @@
   when: ansible_distribution == 'CentOS'
 
 - include: amazon.yml
-  when: ansible_distribution == 'Amazon Linux'
+  when: ansible_distribution == 'Amazon'

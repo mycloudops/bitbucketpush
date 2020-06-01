@@ -6,4 +6,5 @@
   become_user: root
   roles:
     - tomcat
- 
+  vars:
+    tomcat_version: 9.0.35

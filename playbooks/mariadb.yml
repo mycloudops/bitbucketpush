@@ -6,4 +6,5 @@
   
   roles:
     - mariadb_server
-
+  vars:
+    version: 10.1.22
