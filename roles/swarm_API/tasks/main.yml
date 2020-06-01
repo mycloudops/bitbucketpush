@@ -25,12 +25,10 @@
     src: createkey.sh
     dest: /etc/
     mode: 0755
-  when: secure
     
 #run scriptfile
 - name: run script file
   command: /etc/createkey.sh 
-  when: secure
 
 #restart docker
 - service:

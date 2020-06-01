@@ -1,0 +1,5 @@
+- name: updating yum
+  yum: name=* state=installed
+
+- name: install java-1.8.0-openjdk
+  yum: name=java-1.8.0-openjdk state=installed

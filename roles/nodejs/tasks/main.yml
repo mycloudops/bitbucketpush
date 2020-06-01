@@ -9,13 +9,13 @@
 - name: Install Node.js (JavaScript run-time environment)
   package:
       name: nodejs
-      state: present
+      state: latest
 - name: Install Git
   package:
       name: git
       state: present
 - name: install angular cli
-  raw: npm install -g @angular/cli
+  raw: npm install -g @angular/cli@6.0.8
 - name: Check the node version
   raw: node -v
   register: noderversionOut

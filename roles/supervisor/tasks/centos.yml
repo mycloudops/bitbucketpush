@@ -21,6 +21,7 @@
   file: path=/etc/supervisor
      state=directory 
      mode=u=rwX,g=rwX,o=rwX recurse=yes
+     owner={{ansible_user}}
 
 #  Copy service files 
 - name: copy services file 
