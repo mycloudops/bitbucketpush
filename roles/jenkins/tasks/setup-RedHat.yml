@@ -3,7 +3,6 @@
   package:
     name:
       - curl
-      - libselinux-python
     state: installed
 
 - name: Ensure Jenkins repo is installed.
