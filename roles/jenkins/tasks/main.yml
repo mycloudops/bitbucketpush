@@ -21,7 +21,7 @@
 
 - name: Java Installation JDK
   apt:
-   name : default-jdk
+   name : openjdk-8-jdk
    state : latest
   when: ansible_os_family == "Debian"
 
@@ -87,6 +87,8 @@
 
 - name: running the source command
   shell: source /home/ubuntu/.bashrc
+  args:
+    executable: /bin/bash
   when: ansible_os_family == "Debian" 
 
 # Variable setup.
