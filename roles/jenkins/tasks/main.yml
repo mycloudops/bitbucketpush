@@ -40,7 +40,7 @@
 
 - name: setting the maven path
   lineinfile:
-    dest: /home/ec2-user/.bashrc
+    dest: ~/.bashrc
     line: export M2_HOME=/usr/local/apache-maven-3.5.3/
     state: present 
   when: ansible_os_family == "RedHat"  or ansible_os_family == "CentOS"
@@ -54,7 +54,7 @@
 
 - name: setting the maven path
   lineinfile:
-    dest: /home/ec2-user/.bashrc
+    dest: ~/.bashrc
     line: export M2=$M2_HOME/bin
     state: present
   when: ansible_os_family == "RedHat"  or ansible_os_family == "CentOS"
@@ -68,7 +68,7 @@
 
 - name: setting the maven path
   lineinfile:
-    dest: /home/ec2-user/.bashrc
+    dest: ~/.bashrc
     line: export PATH=$M2:$PATH
     state: present
   when: ansible_os_family == "RedHat"  or ansible_os_family == "CentOS"
@@ -82,7 +82,7 @@
 
 
 - name: running the source command
-  shell: source /home/ec2-user/.bashrc
+  shell: source ~/.bashrc
   when: ansible_os_family == "RedHat"  or ansible_os_family == "CentOS"
 
 - name: running the source command
