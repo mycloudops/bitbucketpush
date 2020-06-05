@@ -1,19 +1,41 @@
 
 
   - name: install wget
-    yum: pkg='wget' state=installed
+    yum: pkg='wget' state=present
 
-  - name: install jdk 7
-    yum: pkg='java' state=installed
-    sudo: true
+  #Java Installation
+  - name: Java Installation
+    yum:
+     name : java-1.8.0-openjdk-devel
+     state : latest
+    when: ansible_os_family == "RedHat"  or ansible_os_family == "CentOS"
+
+  #Update
+  - name: update apt-get
+    apt:
+     update_cache: yes
+    when: ansible_os_family == "Debian"
+
+  #Java installation when OS is ubuntu
+  - name: Java Installation
+    apt:
+     name : default-jre
+     state : latest
+    when: ansible_os_family == "Debian"  
+
+  - name: Java Installation JDK
+    apt:
+     name : openjdk-8-jdk
+     state : latest
+    when: ansible_os_family == "Debian"
 
   - name: create "nexus" group
     group: name=nexus 
-    sudo: true
+    
 
   - name: create "nexus" user
     user: name=nexus group=nexus 
-    sudo: true
+    
 
   - name: download the nexus from source file
     get_url: 
@@ -29,11 +51,11 @@
 
   - name: make nexus directory property of "nexus" user/group
     file: path={{nexus_dir}} group=nexus owner=nexus recurse=true
-    sudo: true
+    
       
   - name: create symbolic links to /etc/init.d/nexus
     file: src={{nexus_dir}}/bin/nexus dest=/usr/local/nexus state=link
-    sudo: true
+    
 
   - name: changing the permissions for all nexus 
     shell: chmod 777 /usr/local/nexus-2.14.4-03
